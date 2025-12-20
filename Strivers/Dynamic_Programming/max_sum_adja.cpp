@@ -19,8 +19,21 @@ int main(){
     cin>>nums[i];
   }
   vector<int> dp(n,-1);
-  sub(n-1,nums,dp);
-  cout<<dp[n-1];
+  //sub(n-1,nums,dp);
+  //cout<<dp[n-1];
+  
+  //Reducing space complexity
+  int prev=nums[0];
+  int prev1=0;
+  for(int i=1;i<n;i++){
+    int include=nums[i]+prev1;
+    int exclude= prev;
+    int curr=max(include,exclude);
+    prev1=prev;
+    prev=curr;
+  }
+  cout<<prev;
+
 
 
 } 
