@@ -50,6 +50,7 @@ int main(){
   */
 //Using tabulation method
   int main(){
+    /*
     int n;
     cin>>n;
     vector<vector<int>> nums(n,vector<int>(3));
@@ -79,6 +80,35 @@ int main(){
       }
     }
     cout<<dp[n-1][3];
-    
+    */
+   int n;
+    cin>>n;
+    vector<vector<int>> nums(n,vector<int>(3));
+    for(int i=0;i<n;i++){
+      for(int j=0;j<3;j++){
+        cin>>nums[i][j];
+      }
+    }
+    vector<int> dp(4);
+    //Base Case
+    dp[0]=max(nums[0][1],nums[0][2]);
+    dp[1]=max(nums[0][0],nums[0][2]);
+    dp[2]=max(nums[0][0],nums[0][1]);
+    dp[3]=max(nums[0][0],max(nums[0][1],nums[0][2]));
+    for(int days=1;days<n;days++){
+      vector<int> temp(4,0);
+      for(int last=0;last<4;last++){
+        temp[last]=0;
+        for(int i=0;i<3;i++){
+          if(i!=last){
+          temp[last]=max(temp[last],nums[days][i]+dp[i]);
+          }
+        }
+      }
+      dp=temp;
+    }
+    cout<<dp[3];
 
+    
+ 
   }
