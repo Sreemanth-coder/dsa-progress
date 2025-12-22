@@ -1,26 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int nin(int ind,int last,int arr[][3]){
-  int maxi=0;
+int nin(int ind,int last,int arr[][3],int dp[][4]){
+ 
   if(ind==0){
-   
+     int maxi=0;
     for(int i=0;i<3;i++){
       if(i!=last){
         maxi=max(maxi,arr[0][i]);
       }
     }
-    return maxi;
+    return dp[0][last]=maxi;
   }
-  maxi=0;
+  if(dp[ind][last]!=-1){
+    return dp[ind][last];
+  }
+  int maxi=0;
   for(int i=0;i<3;i++){
     if(i!=last){
-      int task=arr[ind][i]+nin(ind-1,i,arr);
+      int task=arr[ind][i]+nin(ind-1,i,arr,dp);
       maxi=max(maxi,task);
     }
 
   }
-  return maxi;
+  return dp[ind][last]=maxi;
 
 }
 
@@ -33,6 +36,13 @@ int main(){
       cin>>arr[i][j];
     }
   }
-  cout<<nin(n-1,3,arr);
+  int dp[n][4];
+  for(int i=0;i<n;i++){
+    for(int j=0;j<4;j++){
+      dp[i][j]=-1;
+    }
+  }
+
+  cout<<nin(n-1,3,arr,dp);
 
 }
