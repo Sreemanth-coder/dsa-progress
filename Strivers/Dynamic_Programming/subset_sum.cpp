@@ -1,16 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool sub(int ind,int t,vector<int>&nums){
+bool sub(int ind,int t,vector<int>&nums,vector<vector<bool>> &dp){
   if(t==0) return true;
   if(ind==0) return (nums[ind]==t);
 
-  bool not_take=sub(ind-1,t,nums);
+  if(dp[ind][t]!=-1) return dp[ind][t];
+  bool not_take=sub(ind-1,t,nums,dp);
   bool take=false;
   if(t>nums[ind]){
-    take=sub(ind-1,t-nums[ind],nums);
+    take=sub(ind-1,t-nums[ind],nums,dp);
   }
-  return not_take || take;
+  return dp[ind][t]=not_take || take;
 
 }
 
@@ -24,7 +25,8 @@ int main(){
   for(int i=0;i<n;i++){
     cin>>nums[i];
   }
-  cout<<sub(n,t,nums);
+  vector<vector<bool>> dp(n,vector<bool>(t+1,-1));
+  cout<<sub(n-1,t,nums,dp);
   
 
 }
