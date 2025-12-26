@@ -18,7 +18,7 @@ bool sub(int ind,int t,vector<int>&nums,vector<vector<bool>> &dp){
 */
 
 
-
+/*
 int main(){
   int n;
   cin>>n;
@@ -48,6 +48,39 @@ int main(){
     }
   }
   cout<<dp[n-1][k];
+
+  
+
+}
+  */
+
+int main(){
+  int n;
+  cin>>n;
+  int k;
+  cin>>k;
+  vector<int> nums(n);
+  for(int i=0;i<n;i++){
+    cin>>nums[i];
+  }
+ vector<bool>prev(k+1,0),curr(k+1,0);
+ prev[0]=true;
+ prev[nums[0]]=true;
+
+  
+  for(int i=1;i<n;i++){
+    for(int j=1;j<k+1;j++){
+      bool not_take=prev[j];
+      bool take=false;
+      if(nums[i]<=j){
+        take=prev[j-nums[i]];
+      }
+      curr[j]=not_take ||take;
+    }
+    prev=curr;
+
+  }
+  cout<<prev[k];
 
   
 
