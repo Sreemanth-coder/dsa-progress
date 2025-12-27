@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+/*
 /*
 int triangle(int i,int j,vector<vector<int>> &tri,int n,vector<vector<int>> &dp){
   
@@ -15,7 +15,7 @@ int triangle(int i,int j,vector<vector<int>> &tri,int n,vector<vector<int>> &dp)
 
 
 
-
+/*
 int main(){
    vector<vector<int>> tri{
         {2},
@@ -45,4 +45,9 @@ int main(){
 
  
 
+}
+*/
+
+int main(){
+  cout<<22/2;
 }
