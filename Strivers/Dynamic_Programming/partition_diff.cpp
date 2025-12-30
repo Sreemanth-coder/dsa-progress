@@ -10,8 +10,9 @@ int main(){
     cin>>nums[i];
   }
   if(n==2){
+    
     return abs(nums[0]-nums[1]);
   }
-  
+
 
 }

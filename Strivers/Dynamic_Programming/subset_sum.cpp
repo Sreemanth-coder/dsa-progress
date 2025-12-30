@@ -80,7 +80,16 @@ int main(){
     prev=curr;
 
   }
-  cout<<prev[k];
+  int cnt=0;
+  for(int i=0;i<k+1;i++){
+    if(prev[i]==true){
+      cnt++;
+    }
+  }
+ // cout<<prev[k]<<endl;
+  if(cnt%2==0) cout<<cnt/2;
+
+  else cout<<(cnt/2)+1;
 
   
 
