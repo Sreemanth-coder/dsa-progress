@@ -61,7 +61,7 @@ int main(){
     for(int i=0;i<n;i++){
       cin>>nums[i];
     }
-    vector<vector<int>>dp(n,vector<int>(amt+1,-1));
+    vector<vector<int>>dp(n,vector<int>(amt+1,1e9));
     //cout<<ccl(n-1,amt,nums,dp);
 
 
@@ -71,7 +71,7 @@ int main(){
       else dp[0][i]=1e9;
     }
     for(int i=0;i<n;i++){
-      dp[i][0]=1;
+      dp[i][0]=0;
     }
     for(int i=1;i<n;i++){
       for(int j=1;j<amt+1;j++){
@@ -83,7 +83,7 @@ int main(){
         dp[i][j]=min(pick,not_pick);
       }
     }
-    cout<<dp[n-1][amt];
+    return dp[n-1][amt]>=1e9 ? -1 :dp[n-1][amt];
 
 
 
