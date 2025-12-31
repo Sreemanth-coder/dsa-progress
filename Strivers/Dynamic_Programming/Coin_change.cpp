@@ -32,17 +32,18 @@ int main(){
 }
   */
 
-  int ccl(int ind,int amt,vector<int>&nums){
+  int ccl(int ind,int amt,vector<int>&nums,vector<vector<int>> &dp){
     if(ind==0){
       if(amt%nums[0]==0) return amt/nums[0];
       return 1e9;
     }
-    int not_pick=0+ccl(ind-1,amt,nums);
+    if(dp[ind][amt]!=-1) return dp[ind][amt];
+    int not_pick=0+ccl(ind-1,amt,nums,dp);
     int pick=INT_MAX;
     if(nums[ind]<=amt){
-      pick=1+ccl(ind,amt-nums[ind],nums);
+      pick=1+ccl(ind,amt-nums[ind],nums,dp);
     }
-    return min(pick,not_pick);
+    return dp[ind][amt]=min(pick,not_pick);
 
     
   }
@@ -56,6 +57,6 @@ int main(){
     for(int i=0;i<n;i++){
       cin>>nums[i];
     }
-    //vector<int>dp(n+1,-1);
-    cout<<ccl(n-1,amt,nums);
+    vector<vector<int>>dp(n,vector<int>(amt+1,-1));
+    cout<<ccl(n-1,amt,nums,dp);
   }
