@@ -13,7 +13,7 @@ int rcp(int ind,int N,vector<int>&nums){
   return max(pick,not_pick);
 
 }
-
+ 
 
 
 
