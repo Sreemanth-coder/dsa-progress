@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
 int cc(int ind,int amt,vector<int>&nums,vector<vector<int>> &dp){
  
   if(ind==0){
@@ -15,7 +16,7 @@ int cc(int ind,int amt,vector<int>&nums,vector<vector<int>> &dp){
   }
   return dp[ind][amt]=pick+not_pick;
 }
-
+*/
 
 
 
@@ -31,7 +32,10 @@ int main(){
     cin>>nums[i];
   }
   vector<vector<int>> dp(n,vector<int>(amt+1,-1));
-  cout<<cc(n-1,amt,nums,dp);
+  //cout<<cc(n-1,amt,nums,dp);
+  for(int i=0;i<amt+1;i++){
+    dp[0][]
+  }
 
 
 }
