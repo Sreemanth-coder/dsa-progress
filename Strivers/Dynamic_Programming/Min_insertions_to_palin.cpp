@@ -5,18 +5,21 @@ int main(){
   string s;
   cin>>s;
   int n=s.size();
-  int j=n-1;
-  int i=0;
-  int op=0;
-  while(i<=j){
-    if(s[i]==s[j]){
-      i++;
-      j--;
+  string s1=s;
+  reverse(s1.begin(),s1.end());
+
+  
+  vector<int> prev(n+1,0),curr(n+1,0);
+  for(int i=1;i<n+1;i++){
+    for(int j=1;j<n+1;j++){
+      if(s[i-1]==s1[j-1]){
+        curr[j]=1+prev[j-1];
+      }
+      else{
+        curr[j]=max(curr[j-1],prev[j-1]);
+      }
     }
-    else{
-      i++;
-      op++;
-    }
+    prev=curr;
   }
-  cout<<op;
+  cout<<n-prev[n];
 }
