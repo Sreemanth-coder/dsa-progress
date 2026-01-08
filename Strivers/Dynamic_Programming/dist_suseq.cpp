@@ -23,11 +23,12 @@ int main(){
   string s,t;
   cin>>s>>t;
   int ind1=s.size(),ind2=t.size();
-  vector<vector<int>> dp(ind1+1,vector<int>(ind2+1,-1));
+  //vector<vector<int>> dp(ind1+1,vector<int>(ind2+1,-1));
 
 
  // cout<<dis(ind1-1,ind2-1,s,t,dp);
 
+ /*
 //Tabulation
   for(int i=0;i<ind1+1;i++){
     dp[i][0]=1;
@@ -46,6 +47,23 @@ int main(){
     }
   }
   cout<<dp[ind1][ind2];
+*/
 
+vector<unsigned long long> prev(ind2+1,0),curr(ind2+1,0);
+prev[0]=1;
+for(int i=1;i<ind1+1;i++){
+  curr[0]=1;
+  for(int j=1;j<ind2+1;j++){
+    if(s[i]==t[i]){
+      curr[j]=prev[j-1]+prev[j];
+    }
+    else{
+      curr[j]=prev[j];
+    }
+  }
+  prev=curr;
+}
+cout<<int(prev[ind2]);
+ 
 
 }
