@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool wild(int i,int j,string &s1,string &s2){
+bool wild(int i,int j,string &s1,string &s2,vector<vector<bool>> &dp){
 
   //base cases
   if(i<0 && j<0) return true;
@@ -12,16 +12,17 @@ bool wild(int i,int j,string &s1,string &s2){
     }
     return true;
   }
+  if(dp[i][j]!=-1) return dp[i][j];
 
 
 
   if(s1[i]==s2[j] || s1[i]=='?'){
-    return wild(i-1,j-1,s1,s2);
+    return dp[i][j]=wild(i-1,j-1,s1,s2,dp);
   }
   if(s1[i]=='*'){
-    return wild(i,j-1,s1,s2) || wild(i-1,j,s1,s2);
+    return dp[i][j]=wild(i,j-1,s1,s2,dp) || wild(i-1,j,s1,s2,dp);
   }
-  return false;
+  return dp[i][j]=false;
 
 }
 
@@ -30,5 +31,6 @@ int main(){
   string s1,s2;
   cin>>s1>>s2;
   int n=s1.size(),m=s2.size();
-  cout<<wild(n-1,m-1,s1,s2);
+  vector<vector<bool>> dp(n,vector<bool>(m,-1));
+  cout<<wild(n-1,m-1,s1,s2,dp);
 }
