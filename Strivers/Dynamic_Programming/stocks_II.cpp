@@ -35,6 +35,7 @@ int main(){
   //cout<<m1(nums,n,ind,buy,price,dp);
 
 
+  /*
   //Tabulation
   dp[n][0]=dp[n][1]=0;
   for(int ind=n-1;ind>=0;ind--){
@@ -50,6 +51,24 @@ int main(){
     }
   }
   cout<<dp[0][0];
+  */
+ //Space Optimization
+
+ vector<int> curr(2,0),prev(2,0);
+ for(int ind=n-1;ind>=0;ind--){
+  for(int buy=0;buy<=1;buy++){
+    if(buy==0){
+      price=max(-nums[ind]+curr[1],0+curr[0]);
+    }
+    else{
+      price=max(nums[ind]+curr[0],0+curr[1]);
+    }
+    curr[buy]=price;
+  }
+  prev=curr;
+
+ }
+ cout<<prev[0];
 
 
 
