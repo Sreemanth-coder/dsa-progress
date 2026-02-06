@@ -27,10 +27,26 @@ int main(){
   for(int i=0;i<n;i++){
     cin>>nums[i];
   }
-  vector<vector<vector<int>>> dp(n,vector<vector<int>>(2,vector<int>(3,-1)));
-  int n_b=2;
-  int buy=0;
-  int ind=0;
- 
-  cout<<m1(ind,buy,n_b,nums,dp,n);
+  vector<vector<vector<int>>> dp(n+1,vector<vector<int>>(2,vector<int>(3,-1)));
+  
+  
+  //cout<<m1(ind,buy,n_b,nums,dp,n);
+
+
+  //Tabulation
+
+  for(int ind=n-1;ind>=0;ind--){
+    for(int buy=0;buy<2;buy++){
+      for(int n_b=1;n_b<3;n_b++){
+        if(buy==0){
+          dp[ind][buy][n_b]=max(-nums[ind]+dp[ind+1][1][n_b],0+dp[ind+1][0][n_b]);
+        }
+        else{
+          dp[ind][buy][n_b]=max(nums[ind]+dp[ind+1][0][n_b-1],0+dp[ind+1][1][n_b]);
+        }
+
+      }
+    }
+  }
+  cout<<dp[0][0][2];
 }
