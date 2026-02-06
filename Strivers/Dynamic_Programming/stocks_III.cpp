@@ -49,4 +49,26 @@ int main(){
     }
   }
   cout<<dp[0][0][2];
+
+  //Space Optimization
+
+  vector<vector<int>> curr(2,vector<int>(3,0)),prev(2,vector<int>(3,0));
+
+
+
+  for(int ind=n-1;ind>=0;ind--){
+    for(int buy=0;buy<2;buy++){
+      for(int n_b=1;n_b<3;n_b++){
+        if(buy==0){
+          curr[buy][n_b]=max(-nums[ind]+prev[1][n_b],0+prev[0][n_b]);
+        }
+        else{
+          curr[buy][n_b]=max(nums[ind]+prev[0][n_b-1],0+prev[1][n_b]);
+        }
+
+      }
+    }
+    curr=prev;
+  }
+  cout<<prev[0][2];
 }
