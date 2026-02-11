@@ -47,11 +47,10 @@ int main(){
         temp.push_back(nums[i]);
       }
       else{
-        for(int j=0;j<temp.size();j++){
-          if(temp[j]>nums[i]){
-            temp[j]=nums[i];
-          }
-        }
+        int ind=lower_bound(temp.begin(),temp.end(),nums[i])-temp.begin();
+        temp[ind]=nums[i];
+
+
       }
     }
     cout<<temp.size();
