@@ -49,7 +49,7 @@ int main(){
   }
   
 
-  for(int i=n-1;i>=1;i--){
+  for(int i=1;i<=n-1;i++){
     for(int j=i+1;j<=n-1;j++){
       int mini=1e9;
       
@@ -62,7 +62,7 @@ int main(){
     }
 
   }
-  cout<<dp[1][n-1];
+  cout<<dp[n-1][1];
   
 
 
