@@ -16,4 +16,14 @@ int main(){
     adj[v][u]=1;
   }
 
+  //Using Adjaceny list
+
+  vector<int> adjl[n+1];
+  for(int i=0;i<m;i++){
+    int u,v;
+    cin>>u>>v;
+    adjl[u].push_back(v);
+    adjl[v].push_back(u);
+  }
+
 }
