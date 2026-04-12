@@ -13,7 +13,10 @@ int main(){
     vist[sr][sc]=color;
 
     int initialcolor=image[sr][sc];
-    if(initialcolor==color) return image;
+    if(initialcolor==color){
+        //print image array
+    }
+        
 
     int dx[]{-1,0,1,0};
     int dy[]={0,1,0,-1};
@@ -30,5 +33,7 @@ int main(){
             }
         }
     }
+    
+    //print vist array
     
 }
