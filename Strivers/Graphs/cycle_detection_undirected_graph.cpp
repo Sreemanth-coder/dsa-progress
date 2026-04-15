@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//using bfs
+/*
+
 bool cycle(int src, vector<int> adj[],vector<int> &vist){
   queue<pair<int,int>> q;
   q.push({src,-1});
@@ -23,6 +26,23 @@ bool cycle(int src, vector<int> adj[],vector<int> &vist){
   return false;
 
 }
+  */
+
+//dfs
+bool dfs(int src,int parent,vector<int> adj[],vector<int> &vist){
+  vist[src]=1;
+  for(int it:adj[src]){
+    if(!vist[it]){
+      dfs(it,src,adj,vist);
+      return true;
+    }
+    else if(parent!=it){
+      return true;
+    }
+  }
+  return false;
+
+}
 
 int main(){
   vector<int> adj[]={{1,3},{0,2,4},{1,5},{0,4},{1,3,5},{2,4}};
@@ -30,7 +50,7 @@ int main(){
   vector<int> vist(n);
   for(int i=0;i<n;i++){
     if(!vist[i]){
-      if(cycle(i,adj,vist)) {
+      if(dfs(i,-1,adj,vist)) {
         cout<<"Cycle detected";
         return 0;
       }
