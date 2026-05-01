@@ -9,6 +9,8 @@ int main(){
   queue<pair<string,int>> q;
   q.push({beginWord,1});
   set<string> st(wordList.begin(),wordList.end());
+  map<string,int> mp;
+  mp[beginWord]=1;
 
   while(!q.empty()){
     string word=q.front().first;
@@ -26,6 +28,7 @@ int main(){
         if(st.find(word)!=st.end()){
           st.erase(word);
           q.push({word,steps+1});
+          
         }
       }
       word[i]=original;
