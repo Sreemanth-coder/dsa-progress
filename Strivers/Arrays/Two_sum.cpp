@@ -31,4 +31,27 @@ int main(){
     for(auto it=out.begin();it!=out.end();it++){
         cout<<*(it)<<" ";
     }
+
+    //Two pointer approach
+    int n=nums.size();
+        vector<pair<int,int>> res;
+        for(int i=0;i<n;i++){
+            res.push_back({nums[i],i});
+        }
+        sort(res.begin(),res.end());
+        int left=0;
+        int right=n-1;
+        while(left<right){
+            int k=res[left].first+res[right].first;
+            if(k==target){
+                return {res[left].second,res[right].second};
+            }
+            else if(k<target){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return {-1,-1};
 }
