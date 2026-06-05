@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
 bool cycle(int src,vector<vector<int>> &adj,vector<int> &vist,vector<int> &pathvist){
   vist[src]=1;
   pathvist[src]=1;
@@ -43,3 +44,15 @@ int main(){
 
 
 }
+  */
+
+  int main(){
+    int n=3;
+    vector<int> nums;
+    for(int i=0;i<n;i++){
+      nums.push_back(i);
+    }
+    for(int i:nums){
+      cout<<i<<" ";
+    }
+  }
