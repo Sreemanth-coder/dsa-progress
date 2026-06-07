@@ -33,7 +33,8 @@ int main(){
     }
   }
   for(int i:final){
-    cout<<i<<" ";
+    cout<<i;
+    cout<<" ";
   }
 
 }
