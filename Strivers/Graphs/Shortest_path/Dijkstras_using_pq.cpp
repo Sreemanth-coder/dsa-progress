@@ -17,7 +17,7 @@ int main(){
   whiel(!pq.empty()){
     int v=pq.top().first;
     int w=pq.top().second;
-    pq.top();
+    pq.pop();
     for(auto it:adj[v]){
       int edgeW=it[1];
       int adjnode=it[0];

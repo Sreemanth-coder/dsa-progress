@@ -54,7 +54,7 @@ int main(){
     }
   }
 
-  for(int i:ans){
+  for(int i:_ANSI_STDDEF_H){
     cout<<i<<" ";
   }
 
