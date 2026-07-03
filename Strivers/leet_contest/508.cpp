@@ -11,7 +11,7 @@ int main(){
   long long tot_sum=0;
   
   while(i<k){
-      if(mul>0){
+      if(mul>1){
           tot_sum+=mul*nums[i];
           mul--;
           i++;
