@@ -13,7 +13,8 @@ int main(){
   }
 }
   */
- //brute force
+ /*
+    //brute force
  class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -34,6 +35,51 @@ public:
         }
         return f;
         
+       
+        
+        
+        
+        
+    }
+};
+*/
+//Optimal approach
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int,int> mp;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            mp[nums[i]]++;
+        }
+        /*
+        vector<pair<int,int>> final;
+        for(auto m:mp){
+            final.push_back({m.second,m.first});
+        }
+        sort(final.begin(),final.end());
+        reverse(final.begin(),final.end());
+        vector<int> f;
+        for(int i=0;i<k;i++){
+            f.push_back(final[i].second);
+        }
+        return f;
+        */
+        priority_queue<pair<int,int>> pq;
+       for(auto it:mp){
+            pq.push({it.second,it.first});
+            
+        }
+        vector<int> final;
+        while(k>0){
+            int ele=pq.top().second;
+            pq.pop();
+            final.push_back(ele);
+            k--;
+        }
+        
+     
+        return final;
        
         
         
