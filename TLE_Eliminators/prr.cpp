@@ -1,21 +1,48 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
 
-void m1(vector<int> &nums){
-  map<int,int> mp;
-  for(int num:nums){
-    mp[num]++;
-  }
-  vector<int> tuple;
-  for(auto m:mp){
-    if(m.second==3) tuple.push_back(m.first);
-  }
-  
-
-}
-
+//Binary Search
 int main(){
-  vector<int> nums={1,2,1,1,3};
-  m1(nums);
+  vector<int> nums={1};
+  int left=0;
+  int target=1;
+  int right=nums.size()-1;
+  while(left<=right){
+    int mid=(left+right)/2;
+    if(nums[mid]<target){
+      left=mid+1;
+    }
+    else if(nums[mid]>target){
+      right=mid-1;
+    }
+    else if(nums[mid]==target){
+      cout<<"yes"<<endl;
+      return 0;
+    }
+  }
+  cout<<"no"<<endl;
+  return 0;
 }
+  */
+ //lower bound and upper bound
+ int main(){
+
+  vector<int> nums={3,5,8,15,19};
+  int target=9;
+  int left=0;
+  int right=nums.size()-1;
+  int index=INT_MAX;
+  while(left<=right){
+    int mid=left+(right-left)/2;
+    if(nums[mid]<target){
+      left=mid+1;
+    }
+    else if(nums[mid]>=target){
+      right=mid-1;
+      index=min(index,mid);
+    }
+  }
+  cout<<index;
+ }
